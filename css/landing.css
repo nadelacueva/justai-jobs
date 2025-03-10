@@ -1,0 +1,146 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Logo */
+.logo {
+    width: 250px;  /* Adjust size */
+    height: auto;  /* Maintain aspect ratio */
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #fff;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.sign-in, .register {
+    background: black;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.register {
+    background: #444;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    background: #e0e0e0;
+    padding: 50px 20px;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+.hero-buttons button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.search-jobs {
+    background: white;
+    border: 2px solid black;
+}
+
+.join-community {
+    background: black;
+    color: white;
+}
+
+/* Job Listings */
+.job-listings {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.job-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.job-card {
+    background: #f8f8f8;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+}
+
+/* Article Section */
+.article {
+    padding: 40px 20px;
+    background: #f0f0f0;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: white;
+    padding: 30px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    padding: 10px;
+}
+
+.footer-column h3 {
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin: 5px 0;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: white;
+}
