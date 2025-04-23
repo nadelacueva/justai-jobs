@@ -1,0 +1,229 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: white;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .logo img {
+    width: 150px;
+    height: auto;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+  
+  .nav-links a.active {
+    background: #222;
+    color: white;
+  }
+  
+  .dashboard-link a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+  }
+
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    color: #222;
+    background: #f6f6f6;
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 4rem 1rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .hero .subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+  
+  .contact-form {
+    background: white;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+  
+  .contact-form label,
+  .contact-form select,
+  .contact-form textarea,
+  .contact-form button {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-form button {
+    background: #111;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .faq {
+    background: white;
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+  
+  .faq-item {
+    margin: 1rem auto;
+    max-width: 600px;
+    text-align: left;
+  }
+  
+  .faq-title {
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+    background: #eee;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+  }
+  
+  .faq-content {
+    padding: 1rem;
+    display: none;
+    background: #f9f9f9;
+  }
+  
+  .faq-item.open .faq-content {
+    display: block;
+  }
+  
+  .reviews {
+    padding: 2rem 1rem;
+    background: #eee;
+  }
+  
+  .review-cards {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .review-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 250px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .review-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .review-meta img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  
+  .newsletter {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  
+  .newsletter form {
+    margin-top: 1rem;
+  }
+  
+  .newsletter input {
+    padding: 0.5rem;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .newsletter button {
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    background: #111;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+  
+ 
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+footer h3 {
+    margin-bottom: 10px;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin-bottom: 5px;
+}
+
+footer ul li a {
+    color: #ddd;
+    text-decoration: none;
+}

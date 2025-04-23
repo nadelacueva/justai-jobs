@@ -1,0 +1,219 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #fafafa;
+    color: #222;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  h2, h3, h4, h5 {
+    margin-top: 0;
+  }
+
+  .logo img {
+    width: 150px;
+    height: auto;
+  }
+  
+  /* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: white;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .nav-links a {
+    margin: 0 1rem;
+    font-weight: 500;
+  }
+  
+  .dashboard-btn {
+    background: black;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+  }
+  
+  /* Main Wrapper to center content */
+  .main-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  /* Profile Section */
+  .profile-section {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .profile-image {
+    width: 200px;
+    height: 200px;
+    background: #e0e0e0;
+  }
+  
+  .profile-info {
+    flex: 1;
+  }
+  
+  .profile-title p {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .metrics {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+  
+  .metric {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+  }
+  
+  .earnings {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+  
+  .earning {
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .earning.green {
+    background: #d3f9d8;
+  }
+  
+  .earning.yellow {
+    background: #fff3c4;
+  }
+  
+  /* Reviews */
+  .reviews-section {
+    margin-bottom: 3rem;
+  }
+  
+  .reviews {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .review-card {
+    background: white;
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    flex: 1;
+  }
+  
+  .review-footer {
+    font-size: 0.8rem;
+    color: #777;
+  }
+  
+  /* Content Section */
+  .content-section {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .sidebar {
+    width: 250px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    margin-bottom: 1rem;
+  }
+  
+  .recently-viewed {
+    flex: 1;
+  }
+  
+  .cards {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .card {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+    flex: 1;
+  }
+  
+  .image-placeholder {
+    height: 100px;
+    background: #e0e0e0;
+    margin-bottom: 1rem;
+  }
+  
+  .pagination {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  
+  
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+footer h3 {
+    margin-bottom: 10px;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin-bottom: 5px;
+}
+
+footer ul li a {
+    color: #ddd;
+    text-decoration: none;
+}
