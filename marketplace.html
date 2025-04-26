@@ -116,7 +116,7 @@
 
       // AJAX request to fetch jobs matching the search query
       $.ajax({
-        url: '${BACKEND}/api/jobs/search', // Make sure the URL is correct
+        url: `${BACKEND}/api/jobs/search`, // Make sure the URL is correct
         type: 'GET',
           data: { query: searchQuery },
           success: function(response) {
