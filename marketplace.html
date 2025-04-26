@@ -110,7 +110,7 @@
 
         // AJAX request to fetch jobs matching search query
         $.ajax({
-          url: `${BACKEND}/api/jobs/search`,  // Correct API endpoint for backend search
+          url: '${BACKEND}/api/jobs/search?query=${encodeURIComponent(searchQuery)}',  // Correct API endpoint for backend search
           type: 'GET',
           data: { query: searchQuery },
           success: function(response) {
