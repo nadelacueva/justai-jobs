@@ -48,42 +48,39 @@
       </section>
       
       <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const jobCardsContainer = document.querySelector(".job-cards");
+        document.addEventListener("DOMContentLoaded", function() {
+          const jobCardsContainer = document.querySelector(".job-cards");
       
-        fetch('https://justai-backend.onrender.com/api/jobs/top-salary') // 🔥 Replace with your real API endpoint
-          .then(response => response.json())
-          .then(data => {
-            jobCardsContainer.innerHTML = ''; // Clear any old content if needed
+          fetch('https://justai-backend.onrender.com/api/jobs/top-salary') // 🔥 Replace with your real API endpoint
+            .then(response => response.json())
+            .then(data => {
+              jobCardsContainer.innerHTML = ''; // Clear any old content if needed
       
-            data.forEach(job => {
-              const card = document.createElement('div');
-              card.classList.add('job-card');
+              data.forEach(job => {
+                const card = document.createElement('div');
+                card.classList.add('job-card dark'); // Just adding the base class
       
-              if (job.highlighted) {
-                card.classList.add('job-card dark');
-              }
-      
-              card.innerHTML = `
-                <h2>${job.title}</h2>
-                <p class="price"><b><i>$ ${job.salary}</i></b></p>
-                <ul>
+                card.innerHTML = `
+                  <h2>${job.title}</h2>
+                  <p class="price"><b><i>$ ${job.salary}</i></b></p>
+                  <ul>
                     <li>${job.description}</li>
                     <li>Type: ${job.type}</li>
                     <li>Status: ${job.status}</li>
-                </ul>
-                <button class="apply-btn">Apply</button>
-              `;
+                  </ul>
+                  <button class="apply-btn">Apply</button>
+                `;
       
-              jobCardsContainer.appendChild(card);
+                jobCardsContainer.appendChild(card);
+              });
+            })
+            .catch(error => {
+              console.error('Error fetching job data:', error);
+              jobCardsContainer.innerHTML = `<p style="text-align:center;">Sorry, we couldn't load the jobs. Please try again later.</p>`;
             });
-          })
-          .catch(error => {
-            console.error('Error fetching job data:', error);
-            jobCardsContainer.innerHTML = `<p style="text-align:center;">Sorry, we couldn't load the jobs. Please try again later.</p>`;
-          });
-      });
+        });
       </script>
+      
 
     <section class="testimonials">
         <h2>Great Jobs, Greater Stories</h2>
