@@ -22,12 +22,24 @@
       from { opacity: 0; }
       to { opacity: 1; }
     }
+
+    .fadeIn {
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
-  
   <script>
     function validateForm(event) {
-      event.preventDefault(); // Always prevent default form submission
-    
       const account_type = document.getElementById('account_type').value;
       const company = document.getElementById('company');
       const role = document.getElementById('role');
@@ -36,10 +48,10 @@
       const agreement = document.getElementById('agreement').checked;
       const errorMessage = document.getElementById('error-message');
       let isValid = true;
-    
+
       errorMessage.textContent = "";
-    
-      // Set required attributes dynamically
+
+      // Company and Role validation
       if (account_type === 'employee') {
         company.removeAttribute('required');
         role.removeAttribute('required');
@@ -47,24 +59,25 @@
         company.setAttribute('required', 'true');
         role.setAttribute('required', 'true');
       }
-    
-      // Validate password match
+
+      // Password match
       if (password !== confirmPassword) {
-        errorMessage.textContent = "Passwords do not match.";
+        errorMessage.textContent = "Passwords do not match!";
         isValid = false;
       }
-    
-      // Validate agreement checkbox
+
+      // Agreement check
       if (!agreement) {
-        errorMessage.textContent += " You must agree to the Terms.";
+        errorMessage.textContent += " You must agree to the Terms and Conditions.";
         isValid = false;
       }
-    
+
       if (!isValid) {
-        return; // Stop if not valid
+        event.preventDefault();
+        return; // Stop form submission
       }
-    
-      // If valid, manually send form data via fetch
+
+      // Prepare form data for submission
       const formData = new FormData(document.getElementById('registerForm'));
       const data = {
         account_type: formData.get('account_type'),
@@ -74,9 +87,10 @@
         confirmPassword: formData.get('confirmPassword'),
         company: formData.get('company'),
         role: formData.get('role'),
-        agreement: formData.get('agreement') === 'on'
+        agreement: formData.get('agreement')
       };
-    
+
+      // Submit form data using fetch
       fetch('https://justai-backend.onrender.com/api/register', {
         method: 'POST',
         headers: {
@@ -87,22 +101,24 @@
       .then(response => response.json())
       .then(data => {
         if (data.success) {
-          window.location.href = "new-sign-in.html"; // Redirect on success
+          // Show success message and redirect after animation
+          showSuccessMessage("Registration Successful! Redirecting to sign in...");
         } else {
+          // Show error message
           errorMessage.textContent = data.message || "Registration failed. Please try again.";
         }
       })
       .catch(error => {
+        errorMessage.textContent = "Error: Unable to submit the form.";
         console.error(error);
-        errorMessage.textContent = "An error occurred. Please try again.";
       });
     }
-    
+
     function updateFieldNotes() {
       const account_type = document.getElementById('account_type').value;
       const companyNote = document.getElementById('company-note');
       const roleNote = document.getElementById('role-note');
-    
+
       if (account_type === 'employer') {
         companyNote.textContent = "Required";
         roleNote.textContent = "Required";
@@ -113,22 +129,33 @@
         companyNote.textContent = "Required for employers, optional for employees";
         roleNote.textContent = "Required for employers, optional for employees";
       }
-    
+
       companyNote.classList.add('fade');
       roleNote.classList.add('fade');
-    
+
       setTimeout(() => {
         companyNote.classList.remove('fade');
         roleNote.classList.remove('fade');
       }, 500);
     }
-    
+
+    function showSuccessMessage(message) {
+      const successMessage = document.getElementById('success-message');
+      successMessage.textContent = message;
+      successMessage.style.display = 'block';
+      successMessage.classList.add('fadeIn');
+
+      // Redirect after 2 seconds
+      setTimeout(function() {
+        window.location.href = '/new-sign-in.html'; // Redirect to new sign-in page
+      }, 2000);
+    }
+
     window.addEventListener('DOMContentLoaded', function() {
       document.getElementById('registerForm').addEventListener('submit', validateForm);
       document.getElementById('account_type').addEventListener('change', updateFieldNotes);
     });
-    </script>
-    
+  </script>
 </head>
 <body>
   <!-- Navigation Bar -->
@@ -185,6 +212,9 @@
       <p class="checkbox-desc">By checking this box, you confirm that you have read and accepted the Terms and Conditions of JustAI Jobs.</p>
 
       <p id="error-message" style="color: red;"></p>
+
+      <!-- Add a success message here -->
+      <p id="success-message" style="color: green; display: none;"></p>
 
       <button class="btn-black full-width" type="submit">Register</button>
     </form>
