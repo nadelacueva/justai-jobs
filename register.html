@@ -23,8 +23,11 @@
       to { opacity: 1; }
     }
   </style>
+  
   <script>
     function validateForm(event) {
+      event.preventDefault(); // Always prevent default form submission
+    
       const account_type = document.getElementById('account_type').value;
       const company = document.getElementById('company');
       const role = document.getElementById('role');
@@ -33,10 +36,10 @@
       const agreement = document.getElementById('agreement').checked;
       const errorMessage = document.getElementById('error-message');
       let isValid = true;
-
+    
       errorMessage.textContent = "";
-
-      // Company and Role validation
+    
+      // Set required attributes dynamically
       if (account_type === 'employee') {
         company.removeAttribute('required');
         role.removeAttribute('required');
@@ -44,25 +47,24 @@
         company.setAttribute('required', 'true');
         role.setAttribute('required', 'true');
       }
-
-      // Password match
+    
+      // Validate password match
       if (password !== confirmPassword) {
-        errorMessage.textContent = "Passwords do not match!";
+        errorMessage.textContent = "Passwords do not match.";
         isValid = false;
       }
-
-      // Agreement check
+    
+      // Validate agreement checkbox
       if (!agreement) {
-        errorMessage.textContent += " You must agree to the Terms and Conditions.";
+        errorMessage.textContent += " You must agree to the Terms.";
         isValid = false;
       }
-
+    
       if (!isValid) {
-        event.preventDefault();
-        return; // Stop form submission
+        return; // Stop if not valid
       }
-
-      // Prepare form data for submission
+    
+      // If valid, manually send form data via fetch
       const formData = new FormData(document.getElementById('registerForm'));
       const data = {
         account_type: formData.get('account_type'),
@@ -72,10 +74,9 @@
         confirmPassword: formData.get('confirmPassword'),
         company: formData.get('company'),
         role: formData.get('role'),
-        agreement: formData.get('agreement')
+        agreement: formData.get('agreement') === 'on'
       };
-
-      // Submit form data using fetch
+    
       fetch('https://justai-backend.onrender.com/api/register', {
         method: 'POST',
         headers: {
@@ -86,24 +87,22 @@
       .then(response => response.json())
       .then(data => {
         if (data.success) {
-          // Handle success (e.g., redirect to another page)
-          window.location.href = '/success-page.html'; // Example redirect
+          window.location.href = '/success-page.html'; // Redirect on success
         } else {
-          // Show error message
           errorMessage.textContent = data.message || "Registration failed. Please try again.";
         }
       })
       .catch(error => {
-        errorMessage.textContent = "Error: Unable to submit the form.";
         console.error(error);
+        errorMessage.textContent = "An error occurred. Please try again.";
       });
     }
-
+    
     function updateFieldNotes() {
       const account_type = document.getElementById('account_type').value;
       const companyNote = document.getElementById('company-note');
       const roleNote = document.getElementById('role-note');
-
+    
       if (account_type === 'employer') {
         companyNote.textContent = "Required";
         roleNote.textContent = "Required";
@@ -114,21 +113,22 @@
         companyNote.textContent = "Required for employers, optional for employees";
         roleNote.textContent = "Required for employers, optional for employees";
       }
-
+    
       companyNote.classList.add('fade');
       roleNote.classList.add('fade');
-
+    
       setTimeout(() => {
         companyNote.classList.remove('fade');
         roleNote.classList.remove('fade');
       }, 500);
     }
-
+    
     window.addEventListener('DOMContentLoaded', function() {
       document.getElementById('registerForm').addEventListener('submit', validateForm);
       document.getElementById('account_type').addEventListener('change', updateFieldNotes);
     });
-  </script>
+    </script>
+    
 </head>
 <body>
   <!-- Navigation Bar -->
