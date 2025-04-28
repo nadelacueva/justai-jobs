@@ -71,6 +71,10 @@ body {
     flex: 1;
 }
 
+ul li {
+    margin-bottom: 15px;  /* Adjust the value for the desired space */
+}
+
 .newsletter {
     text-align: center;
     padding: 40px;

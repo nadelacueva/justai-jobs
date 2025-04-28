@@ -65,12 +65,30 @@ body {
 .hero {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 40px;
-    background: #ddd;
+    background: url('/assets/home1.png') center/cover no-repeat; /* background photo */
+    text-align: center; /* centers text inside hero-content */
 }
+
 .hero-content {
-    max-width: 50%;
+    max-width: 600px; /* adjust if needed */
+    color: white;
+    padding-right: 40px;
+}
+
+.hero-content h1 {
+    font-size: 48px; /* big and bold */
+    font-family: Georgia, serif;
+}
+
+.hero-content p {
+    font-size: 24px; /* a bit smaller than h1 */
+}
+
+.hero-image {
+    width: 250px;  /* Adjust size */
+    height: auto;  /* Maintain aspect ratio */
 }
 .search-bar {
     display: flex;
@@ -137,6 +155,16 @@ body {
     margin-top: 10px;
 }
 
+.apply-btn-r {
+    display: block;
+    background: #fff;
+    color: #000;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
 /* Testimonials */
 .testimonials {
     text-align: center;
@@ -155,6 +183,13 @@ body {
     border-radius: 10px;
     width: 200px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card blockquote {
+    margin: 0;
+    padding: 0;
+    font-style: italic; /* still keep the nice quote feel */
+    color: #555; /* softer text color for quotes */
 }
 
 /* Footer */

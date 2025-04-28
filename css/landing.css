@@ -15,7 +15,7 @@ body {
 /* Navigation Bar */
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly; /* Logo on the left, menu on the right */
     align-items: center;
     padding: 15px 20px;
     background: #fff;
@@ -37,6 +37,15 @@ body {
     text-decoration: none;
     color: #000;
     font-weight: bold;
+    padding: 8px 12px;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Hover effect: Black background */
+.nav-links a:hover {
+    background: black;
+    color: white;
+    border-radius: 5px;
 }
 
 .sign-in, .register {
@@ -45,6 +54,7 @@ body {
     border: none;
     padding: 8px 12px;
     cursor: pointer;
+    font-size: medium;
 }
 
 .register {
@@ -56,11 +66,16 @@ body {
     text-align: center;
     background: #e0e0e0;
     padding: 50px 20px;
+    background: url('/assets/landing1.png') center/cover no-repeat; /* background photo */
 }
 
 .hero h1 {
-    font-size: 36px;
-    margin: 10px 0;
+    font-size: 48px; /* big and bold */
+    font-family: Georgia, serif;
+}
+
+.hero p {
+    font-size: 24px; /* a bit smaller than h1 */
 }
 
 .hero-buttons button {
@@ -71,13 +86,15 @@ body {
 }
 
 .search-jobs {
-    background: white;
-    border: 2px solid black;
+    background: #444;
+    color: white;
+    font-size: 14px;
 }
 
 .join-community {
     background: black;
     color: white;
+    font-size: 14px;
 }
 
 /* Job Listings */
@@ -105,6 +122,13 @@ body {
     padding: 40px 20px;
     background: #f0f0f0;
     text-align: center;
+}
+
+.article-content {
+    max-width: 800px;
+    margin: 40px auto;
+    
+    text-align: justify;
 }
 
 /* Footer */
