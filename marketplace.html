@@ -134,12 +134,17 @@
       function fetchJobData(searchQuery, sortType) {
         const BACKEND = "https://justai-backend.onrender.com"; // Your backend API URL
 
+        console.log('Fetching job data with query:', searchQuery, 'and sort:', sortType); // Debug log
+
         $.ajax({
-          url: `${BACKEND}/api/jobs/search?query=${searchQuery}&sort=${sortType}`, 
+          url: `${BACKEND}/api/jobs/search?query=${searchQuery}&sort=${sortType}`,
           type: 'GET',
           success: function(response) {
-            $('#job-grid').empty();
-            if (response.jobs.length > 0) {
+            console.log('Job data received:', response);  // Log the response to ensure it's correct
+
+            // Ensure the response contains a "jobs" array
+            if (response.jobs && Array.isArray(response.jobs) && response.jobs.length > 0) {
+              $('#job-grid').empty(); // Clear the job grid
               response.jobs.forEach(function(job) {
                 var jobCard = `<div class="job-card">
                                   <div class="image-placeholder"></div>
@@ -152,14 +157,18 @@
                 $('#job-grid').append(jobCard);
               });
             } else {
-              $('#job-grid').append('<p>No jobs found</p>');
+              $('#job-grid').empty(); // Clear the job grid in case of no results
+              $('#job-grid').append('<p>No jobs found</p>'); // Display no jobs found message
             }
           },
-          error: function() {
+          error: function(error) {
+            console.log('Error fetching jobs:', error);  // Log any error in the request
+            $('#job-grid').empty();
             $('#job-grid').append('<p>Error fetching jobs</p>');
           }
         });
       }
+
 
       // Ensure background image is shown when page loads and no search input is present
       if ($('#search-bar').val().length === 0) {
