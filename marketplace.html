@@ -134,7 +134,7 @@
         const BACKEND = "https://justai-backend.onrender.com"; // Your backend API URL
 
         $.ajax({
-          url: `${BACKEND}/api/jobs/search`, 
+          url: `${BACKEND}/api/jobs/search?query=data`, 
           type: 'GET',
           data: { query: searchQuery, sort: sortType },
           success: function(response) {
