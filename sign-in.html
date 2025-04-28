@@ -40,11 +40,12 @@
         const data = await response.json();
 
         if (response.ok) {
-          // Save token if it exists
           if (data.token) {
             localStorage.setItem('token', data.token);
+            window.location.href = '/account-dashboard.html'; // <--- redirect to dashboard after sign in
+          } else {
+            errorMessage.textContent = "Login succeeded but no token received!";
           }
-          window.location.href = '/home.html';
         } else {
           const errorText = data?.message || "An unknown error occurred!";
           errorMessage.textContent = errorText;

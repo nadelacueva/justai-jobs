@@ -1,219 +1,329 @@
+/* General */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #fafafa;
-    color: #222;
-  }
-  
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  h2, h3, h4, h5 {
-    margin-top: 0;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #fafafa;
+  color: #222;
+}
 
-  .logo img {
-    width: 150px;
-    height: auto;
-  }
-  
-  /* Header */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background: white;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .nav-links a {
-    margin: 0 1rem;
-    font-weight: 500;
-  }
-  
-  .dashboard-btn {
-    background: black;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-  }
-  
-  /* Main Wrapper to center content */
-  .main-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-  
-  /* Profile Section */
-  .profile-section {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 3rem;
-  }
-  
-  .profile-image {
-    width: 200px;
-    height: 200px;
-    background: #e0e0e0;
-  }
-  
-  .profile-info {
-    flex: 1;
-  }
-  
-  .profile-title p {
-    color: #666;
-    font-size: 0.9rem;
-  }
-  
-  .metrics {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1rem;
-  }
-  
-  .metric {
-    background: #f9f9f9;
-    padding: 1rem;
-    border-radius: 6px;
-    text-align: center;
-  }
-  
-  .earnings {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1rem;
-  }
-  
-  .earning {
-    padding: 1rem;
-    border-radius: 6px;
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  .earning.green {
-    background: #d3f9d8;
-  }
-  
-  .earning.yellow {
-    background: #fff3c4;
-  }
-  
-  /* Reviews */
-  .reviews-section {
-    margin-bottom: 3rem;
-  }
-  
-  .reviews {
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .review-card {
-    background: white;
-    padding: 1rem;
-    border: 1px solid #eee;
-    border-radius: 6px;
-    flex: 1;
-  }
-  
-  .review-footer {
-    font-size: 0.8rem;
-    color: #777;
-  }
-  
-  /* Content Section */
-  .content-section {
-    display: flex;
-    gap: 2rem;
-  }
-  
-  .sidebar {
-    width: 250px;
-  }
-  
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar li {
-    margin-bottom: 1rem;
-  }
-  
-  .recently-viewed {
-    flex: 1;
-  }
-  
-  .cards {
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .card {
-    background: white;
-    padding: 1rem;
-    border-radius: 6px;
-    text-align: center;
-    flex: 1;
-  }
-  
-  .image-placeholder {
-    height: 100px;
-    background: #e0e0e0;
-    margin-bottom: 1rem;
-  }
-  
-  .pagination {
-    margin-top: 1rem;
-    text-align: center;
-    font-size: 1.5rem;
-  }
-  
-  
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h2, h3, h4, h5 {
+  margin-top: 0;
+}
+
+.logo {
+  width: auto;
+  height: 150px;
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px 5px 0px;
+  background: #fff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  padding: 8px 12px;
+  transition: background 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+  background: black;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Active Link Highlight */
+.nav-links a.active {
+  background: black;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Account Dashboard Navigation */
+.account-dashboard-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px 5px 0px;
+  background: #fff;
+  border-bottom: 2px solid #ddd;
+}
+
+.account-nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.account-nav-links li {
+  display: inline;
+}
+
+.account-nav-links a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  padding: 8px 12px;
+  transition: background 0.3s ease-in-out;
+}
+
+.account-nav-links a:hover {
+  background: black;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Active Link Highlight for Account Dashboard */
+.account-nav-links a.active {
+  background: black;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Main Wrapper to center content */
+.main-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Profile Section */
+.profile-section {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  background: #e0e0e0 url('/assets/default-profile.png') no-repeat center center;
+  background-size: cover;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-title strong {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.profile-title p {
+  font-style: italic;
+  color: #999;
+}
+
+.profile-info p {
+  max-width: 600px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.metrics {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.metric {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.metric p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.metric span {
+  font-size: 1.5rem;
+  color: #ffbc00; /* Adding a bit of contrast to the icons */
+}
+
+.earnings {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.earning {
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: normal;
+  color: #444;
+}
+
+.earning.green {
+  background: #d3f9d8;
+}
+
+.earning.yellow {
+  background: #fff3c4;
+}
+
+/* Reviews */
+.reviews-section {
+  margin-bottom: 3rem;
+}
+
+.reviews {
+  display: flex;
+  gap: 1rem;
+}
+
+.review-card {
+  background: white;
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  flex: 1;
+}
+
+.review-footer {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Content Section */
+.content-section {
+  display: flex;
+  gap: 2rem;
+}
+
+.sidebar {
+  width: 250px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 1rem;
+}
+
+.sidebar li:hover {
+  background-color: #f5f5f5;
+  padding-left: 10px;
+}
+
+.recently-viewed {
+  flex: 1;
+}
+
+.cards {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  flex: 1;
+  min-width: 250px;
+}
+
+.image-placeholder {
+  height: 100px;
+  background: #e0e0e0;
+  margin-bottom: 1rem;
+}
+
+.pagination {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/* Button Hover Effects */
+.dashboard-btn:hover, .recently-viewed .card button:hover {
+  background-color: #444;
+  cursor: pointer;
+}
+
+/* Links Hover Effects */
+.account-nav-links a:hover, footer ul li a:hover {
+  text-decoration: underline;
+  color: #ffbc00;
+}
+
 /* Footer */
 footer {
-    background: #222;
-    color: white;
-    padding: 30px 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  background: #222;
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .footer-column {
-    flex: 1;
-    min-width: 200px;
-    padding: 10px;
+  flex: 1;
+  min-width: 200px;
+  padding: 10px;
 }
 
 .footer-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
 }
 
 footer h3 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 footer ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 footer ul li {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 footer ul li a {
-    color: #ddd;
-    text-decoration: none;
+  color: #ddd;
+  text-decoration: none;
 }
