@@ -151,7 +151,16 @@ button {
   border-radius: 4px; /* Rounded corners */
   text-align: center; /* Center text */
   cursor: pointer; /* Change cursor to pointer on hover */
-  transition: background 0.3s ease-in-out; /* Smooth transition effect */
+  width: 100%; /* Ensure it fills the container width */
+  min-height: 50px; /* <<< Added to prevent shrinking when text changes */
+  transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transitions */
+}
+
+/* Handle the disabled state for loading */
+.btn-black.full-width:disabled {
+  background: grey; /* Grey background when disabled */
+  opacity: 0.7; /* Slightly transparent to show it's inactive */
+  cursor: not-allowed; /* Show a forbidden cursor */
 }
 
 .btn-black.full-width:hover {
