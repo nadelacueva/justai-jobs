@@ -26,55 +26,62 @@
 
     <section class="hero">
         <div class="hero-content">
-            <!-- <h1>JustAI Jobs</h1> -->
-            <!-- <p>Fair & Square</p> -->
-            <div class="search-bar">
+            <h1>JustAI Jobs</h1>
+            <p>Fair & Square</p>
+            <!-- <div class="search-bar">
                 <input type="text" placeholder="Search">
                 <button>&times;</button>
-            </div>
+            </div> -->
         </div>
-        <img src="/assets/logo_name.png" alt="Brand Logo" class="hero-image">
+        <!-- <img src="/assets/logo_name.png" alt="Brand Logo" class="hero-image"> -->
     </section>
 
     <section class="job-listings">
         <div class="tabs">
-            <button class="active">Jobs You Might Like</button>
-            <button>Fresh Opportunities</button>
+          <button class="active">Jobs You Might Like</button>
+          <button>Fresh Opportunities</button>
         </div>
-        <div class="job-cards">
-            <div class="job-card">
-                <h2>Machine Learning Engineer</h2>
-                <p class="price">$85–$120/hr</p>
+      
+        <!-- Job cards will be dynamically inserted here -->
+        <div class="job-cards"></div>
+      
+      </section>
+      
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const jobCardsContainer = document.querySelector(".job-cards");
+      
+        fetch('https://justai-backend.onrender.com/api/jobs/top-salary') // 🔥 Replace with your real API endpoint
+          .then(response => response.json())
+          .then(data => {
+            jobCardsContainer.innerHTML = ''; // Clear any old content if needed
+      
+            data.forEach(job => {
+              const card = document.createElement('div');
+              card.classList.add('job-card');
+      
+              if (job.highlighted) {
+                card.classList.add('dark');
+              }
+      
+              card.innerHTML = `
+                <h2>${job.title}</h2>
+                <p class="price">${job.salary}</p>
                 <ul>
-                    <li>Design, train, and optimize machine learning models for real-time decision making.</li>
-                    <li>Collaborate with robotics and systems engineers on autonomous navigation.</li>
-                    <li>Implement scalable ML pipelines for large-scale sensor data.</li>
+                  ${job.description.map(item => `<li>${item}</li>`).join('')}
                 </ul>
-                <button class="apply-btn">Apply</button>
-            </div>
-            <div class="job-card dark">
-                <h2>AI Research Scientist</h2>
-                <p class="price">$95–$140/hr</p>
-                <ul>
-                    <li>Research and develop state-of-the-art NLP models and architectures.</li>
-                    <li>Contribute to open-source initiatives and publish in top AI conferences.</li>
-                    <li>Focus on language understanding, sentiment analysis, and summarization.</li>
-                </ul>
-                <button class="apply-btn-r">Apply</button>
-            </div>
-            <div class="job-card">
-                <h2>Computer Vision Engineer</h2>
-                <p class="price">$75–$105/hr</p>
-                <ul>
-                    <li>Build CV systems for customer behavior tracking and heatmap generation.</li>
-                    <li>Deploy models in edge devices for real-time retail insights.</li>
-                    <li>Analyze foot traffic data and generate actionable reports.</li>
-                </ul>
-                <button class="apply-btn">Apply</button>
-            </div>
-        </div>
-        <button class="next">Next →</button>
-    </section>
+                <button class="${job.highlighted ? 'apply-btn-r' : 'apply-btn'}">Apply</button>
+              `;
+      
+              jobCardsContainer.appendChild(card);
+            });
+          })
+          .catch(error => {
+            console.error('Error fetching job data:', error);
+            jobCardsContainer.innerHTML = `<p style="text-align:center;">Sorry, we couldn't load the jobs. Please try again later.</p>`;
+          });
+      });
+      </script>
 
     <section class="testimonials">
         <h2>Great Jobs, Greater Stories</h2>
