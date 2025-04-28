@@ -65,14 +65,18 @@
               }
       
               card.innerHTML = `
-                <h2>${job.title}</h2>
-                <p class="price">${job.salary}</p>
-                <ul>
-                  <li>${job.description}</li>
-                  <li>Type: ${job.type}</li>
-                  <li>Status: ${job.status}</li>
-                </ul>
-                <button class="apply-btn">Apply</button>
+                <div class="job-cards">
+                    <div class="job-card dark">
+                        <h2>${job.title}</h2>
+                        <p class="price">${job.salary}</p>
+                        <ul>
+                        <li>${job.description}</li>
+                        <li>Type: ${job.type}</li>
+                        <li>Status: ${job.status}</li>
+                        </ul>
+                        <button class="apply-btn">Apply</button>
+                    </div>
+                </div>
               `;
       
               jobCardsContainer.appendChild(card);
