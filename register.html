@@ -59,7 +59,44 @@
 
       if (!isValid) {
         event.preventDefault();
+        return; // Stop form submission
       }
+
+      // Prepare form data for submission
+      const formData = new FormData(document.getElementById('registerForm'));
+      const data = {
+        account_type: formData.get('account_type'),
+        name: formData.get('name'),
+        email: formData.get('email'),
+        password: formData.get('password'),
+        confirmPassword: formData.get('confirmPassword'),
+        company: formData.get('company'),
+        role: formData.get('role'),
+        agreement: formData.get('agreement')
+      };
+
+      // Submit form data using fetch
+      fetch('https://justai-backend.onrender.com/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          // Handle success (e.g., redirect to another page)
+          window.location.href = '/success-page.html'; // Example redirect
+        } else {
+          // Show error message
+          errorMessage.textContent = data.message || "Registration failed. Please try again.";
+        }
+      })
+      .catch(error => {
+        errorMessage.textContent = "Error: Unable to submit the form.";
+        console.error(error);
+      });
     }
 
     function updateFieldNotes() {

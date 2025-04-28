@@ -1,150 +1,215 @@
 /* Base styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f3f3f3;
-    color: #222;
-  }
-  
-  a {
-    text-decoration: none;
-    color: #222;
-  }
-  
-  button {
-    font-family: inherit;
-    cursor: pointer;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f3f3f3;
+  color: #222;
+}
 
-  .logo img {
-    width: 150px;
-    height: auto;
-  }
-  
-  /* Header */
-  .header {
-    background: white;
-    border-bottom: 1px solid #ddd;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .nav-links a {
-    margin: 0 1rem;
-    font-weight: 500;
-  }
-  
-  .auth-buttons button {
-    margin-left: 0.5rem;
-    padding: 0.4rem 1rem;
-    border-radius: 4px;
-    border: none;
-  }
-  
-  .btn-outline {
-    border: 1px solid #ccc;
-    background: white;
-  }
-  
-  .btn-black {
-    background: black;
-    color: white;
-  }
-  
-  /* Main Sign In */
-  .signin-container {
-    text-align: center;
-    padding: 4rem 1rem;
-  }
-  
-  .main-title {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .subtitle {
-    color: #666;
-    margin-bottom: 2rem;
-  }
-  
-  .signin-box {
-    background: white;
-    width: 300px;
-    max-width: 90%;
-    margin: 0 auto;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    text-align: left;
-  }
-  
-  .signin-box label {
-    display: block;
-    margin-top: 1rem;
-    margin-bottom: 0.25rem;
-    font-size: 0.9rem;
-  }
-  
-  .signin-box input {
-    width: 100%;
-    padding: 0.6rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .full-width {
-    width: 100%;
-    margin-top: 1.5rem;
-  }
-  
-  .forgot-link {
-    display: block;
-    margin-top: 1rem;
-    text-align: center;
-    font-size: 0.85rem;
-    color: #444;
-  }
-  
+a {
+  text-decoration: none;
+  color: #222;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Logo */
+.logo {
+  width: 250px;
+  height: auto;
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #fff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  padding: 8px 12px;
+  transition: background 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+  background: black;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Header */
+.header {
+  background: white;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* .nav-links a {
+  margin: 0 1rem;
+  font-weight: 500;
+}
+
+.auth-buttons button {
+  margin-left: 0.5rem;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  border: none;
+}
+
+.btn-outline {
+  border: 1px solid #ccc;
+  background: white;
+}
+
+.btn-black {
+  background: black;
+  color: white;
+} */
+
+/* Main Sign In */
+.signin-container {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.main-title {
+  font-size: 48px; /* Aligned with the register page */
+  margin-bottom: 0.5rem;
+  font-family: Georgia, serif;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 24px; /* Aligned with the register page */
+  margin-bottom: 2rem;
+  /* font-family: 'Roboto', sans-serif; */
+}
+
+.signin-box {
+  background: white;
+  width: 500px; /* Increased width to match the register page */
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.signin-box label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem; /* Same font size as register page */
+  font-weight: 500; /* Same font weight as register page */
+}
+
+.signin-box input {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem; /* Same as register page */
+}
+
+.btn-black.full-width {
+  font-size: 1rem; /* Match the font size with the form inputs */
+  padding: 1rem; /* Add padding to make the button look bigger */
+  background: black; /* Same background color */
+  color: white; /* White text */
+  border: none; /* Remove any border */
+  border-radius: 4px; /* Rounded corners */
+  text-align: center; /* Center text */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background 0.3s ease-in-out; /* Smooth transition effect */
+}
+
+.btn-black.full-width:hover {
+  background: #333; /* Darker shade on hover */
+}
+
+.full-width {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.forgot-link {
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem; /* Aligned with register page */
+  color: #444;
+}
+
+/* Error message styling */
+#error-message {
+  color: red; /* Set text color to red for visibility */
+  font-size: 0.9rem; /* Smaller font size to fit within the form */
+  margin-top: 1rem; /* Space between error and the last form element */
+  text-align: center; /* Center the error message */
+}
+
 /* Footer */
 footer {
-    background: #222;
-    color: white;
-    padding: 30px 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  background: #222;
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .footer-column {
-    flex: 1;
-    min-width: 200px;
-    padding: 10px;
+  flex: 1;
+  min-width: 200px;
+  padding: 10px;
 }
 
 .footer-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
 }
 
 footer h3 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 footer ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 footer ul li {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 footer ul li a {
-    color: #ddd;
-    text-decoration: none;
+  color: #ddd;
+  text-decoration: none;
 }
