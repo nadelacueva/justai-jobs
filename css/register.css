@@ -166,8 +166,6 @@ button {
   flex-shrink: 0; /* Prevent label from shrinking */
 }
 
-
-
 .checkbox-desc {
   font-size: 0.85rem;
   color: #666;
