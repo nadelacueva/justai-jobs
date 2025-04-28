@@ -87,7 +87,7 @@
       .then(response => response.json())
       .then(data => {
         if (data.success) {
-          window.location.href = '/success-page.html'; // Redirect on success
+          window.location.href = "new-sign-in.html"; // Redirect on success
         } else {
           errorMessage.textContent = data.message || "Registration failed. Please try again.";
         }
