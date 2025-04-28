@@ -134,21 +134,20 @@
         const BACKEND = "https://justai-backend.onrender.com"; // Your backend API URL
 
         $.ajax({
-          url: `${BACKEND}/api/jobs/search`, // Fixed the URL format
+          url: `${BACKEND}/api/jobs/search?query=${searchQuery}&sort=${sortType}`, 
           type: 'GET',
-          data: { query: searchQuery, sort: sortType }, // Send query and sort data
           success: function(response) {
             $('#job-grid').empty();
             if (response.jobs.length > 0) {
               response.jobs.forEach(function(job) {
                 var jobCard = `<div class="job-card">
-                                   <div class="image-placeholder"></div>
-                                   <p class="job-title">${job.title}</p>
-                                   <p class="company">${job.company}</p>
-                                   <strong class="salary">${job.salary}</strong>
-                                   <p class="description">${job.description}</p>
-                                   <small class="posted-date">${job.posted_date}</small>
-                                 </div>`;
+                                  <div class="image-placeholder"></div>
+                                  <p class="job-title">${job.title}</p>
+                                  <p class="company">${job.company}</p>
+                                  <strong class="salary">${job.salary}</strong>
+                                  <p class="description">${job.description}</p>
+                                  <small class="posted-date">${job.posted_date}</small>
+                                </div>`;
                 $('#job-grid').append(jobCard);
               });
             } else {
