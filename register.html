@@ -25,7 +25,7 @@
   </style>
   <script>
     function validateForm(event) {
-      const accountType = document.getElementById('accountType').value;
+      const account_type = document.getElementById('account_type').value;
       const company = document.getElementById('company');
       const role = document.getElementById('role');
       const password = document.getElementById('password').value;
@@ -37,10 +37,10 @@
       errorMessage.textContent = "";
 
       // Company and Role validation
-      if (accountType === 'employee') {
+      if (account_type === 'employee') {
         company.removeAttribute('required');
         role.removeAttribute('required');
-      } else if (accountType === 'employer') {
+      } else if (account_type === 'employer') {
         company.setAttribute('required', 'true');
         role.setAttribute('required', 'true');
       }
@@ -63,14 +63,14 @@
     }
 
     function updateFieldNotes() {
-      const accountType = document.getElementById('accountType').value;
+      const account_type = document.getElementById('account_type').value;
       const companyNote = document.getElementById('company-note');
       const roleNote = document.getElementById('role-note');
 
-      if (accountType === 'employer') {
+      if (account_type === 'employer') {
         companyNote.textContent = "Required";
         roleNote.textContent = "Required";
-      } else if (accountType === 'employee') {
+      } else if (account_type === 'employee') {
         companyNote.textContent = "Optional";
         roleNote.textContent = "Optional";
       } else {
@@ -89,7 +89,7 @@
 
     window.addEventListener('DOMContentLoaded', function() {
       document.getElementById('registerForm').addEventListener('submit', validateForm);
-      document.getElementById('accountType').addEventListener('change', updateFieldNotes);
+      document.getElementById('account_type').addEventListener('change', updateFieldNotes);
     });
   </script>
 </head>
@@ -114,8 +114,8 @@
     <p class="subtitle">Registration Form</p>
     
     <form id="registerForm" action="https://justai-backend.onrender.com/api/register" method="POST" class="register-box">
-      <label for="accountType">Account Type</label>
-      <select id="accountType" name="accountType" required>
+      <label for="account_type">Account Type</label>
+      <select id="account_type" name="account_type" required>
         <option value="">Select Account Type</option>
         <option value="employee">Employee</option>
         <option value="employer">Employer</option>
