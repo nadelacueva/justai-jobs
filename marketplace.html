@@ -1,171 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ethical AI Jobs Marketplace</title>
-  <link rel="stylesheet" href="/css/marketplace.css" />
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery for AJAX -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Marketplace - JustAI Jobs</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <header class="navbar">
-    <a href="home.html"><img src="/assets/main_logo.png" alt="Logo" class="logo"></a>
-    <nav class="nav-links">
-      <a href="index.html" id="ethical-ai-jobs-link">Ethical AI Jobs</a>
-      <a href="community.html">Connect & Grow</a>
-      <a href="about.html">Who We Are</a>
-      <a href="support-inquiries.html">Support & Inquiries</a>
-      <a href="account-dashboard.html">Account Dashboard</a>
-    </nav>
-  </header>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="logo.png" alt="JustAI Jobs Logo" />
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/jobs" class="active">Jobs</a></li>
+      <li><a href="/community">Community</a></li>
+    </ul>
+  </nav>
 
-  <!-- Main Content -->
-  <main class="container">
-    <section class="main-content">
+  <!-- Container for Main Content and Sidebar -->
+  <div class="container">
+    <div class="main-content">
+      <h2>Job Marketplace</h2>
       <div class="search-filter">
-        <input type="text" id="search-bar" placeholder="Search" />
-        <button class="search-button">Search</button> <!-- Restored search button -->
-        <span class="sort-label">Sort:</span> <!-- Sort label -->
-        <button class="filter-button active" id="sort-newest">Newest</button>
-        <button class="filter-button" id="sort-salary">Highest Salary</button>
+        <input type="text" id="search-query" placeholder="Search for job title or description..." />
+        <button class="search-button" id="search-button">Search</button>
       </div>
 
-      <div class="job-grid" id="job-grid">
-        <!-- Job Cards will appear here after search -->
+      <!-- Job Grid (Job Cards) -->
+      <div id="results-container">
+        <!-- Job results will be displayed here -->
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
     <div class="footer-container">
-        <div class="footer-column">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="marketplace.html">Ethical AI Jobs</a></li>
-                <li><a href="community.html">Connect & Grow</a></li>
-                <li><a href="about.html">Who We Are</a></li>
-                <li><a href="support-inquiries.html">Support & Inquiries</a></li>
-                <li><a href="#">FAQs</a></li>
-                <li><a href="#">Blog</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3>Let's Connect</h3>
-            <ul>
-                <li><a href="#">Quick Chat</a></li>
-                <li><a href="#">Email</a></li>
-                <li><a href="#">Phone</a></li>
-                <li><a href="#">Address</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3>Legal & Policies</h3>
-            <ul>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="terms.html" target="_blank">Terms of Service</a></li>
-                <li><a href="#">Fair Hiring Commitment</a></li>
-            </ul>
-        </div>
+      <div class="footer-column">
+        <h3>About Us</h3>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <ul>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Email Us</a></li>
+        </ul>
+      </div>
     </div>
   </footer>
 
+  <!-- JavaScript -->
   <script>
-    $(document).ready(function() {
-      var sortType = 'newest'; // Default sorting type
+    document.getElementById('search-button').addEventListener('click', function() {
+      const query = document.getElementById('search-query').value.trim();
 
-      // Highlight the "Ethical AI Jobs" link if on the marketplace page
-      var currentPage = window.location.pathname;
-      if (currentPage.includes("marketplace.html")) {
-        $('#ethical-ai-jobs-link').addClass('active');
+      // Validate if the search query is empty
+      if (!query) {
+        alert("Please enter a search query.");
+        return; // Prevent further action if no query is entered
       }
 
-      // Handle search input
-      $('#search-bar').on('input', function() {
-        var searchQuery = $(this).val();
+      // Fetch the search results from the server
+      fetch(`/api/jobs/search?query=${encodeURIComponent(query)}`)
+        .then(response => response.json())
+        .then(data => {
+          const resultsContainer = document.getElementById('results-container');
+          resultsContainer.innerHTML = ''; // Clear previous results
 
-        const BACKEND = "https://justai-backend.onrender.com"; // Your backend API URL
+          if (data.length === 0) {
+            resultsContainer.innerHTML = '<p>No jobs found. Try another search.</p>';
+          } else {
+            const jobGrid = document.createElement('div');
+            jobGrid.classList.add('job-grid');
+            data.forEach(job => {
+              const jobCard = document.createElement('div');
+              jobCard.classList.add('job-card');
 
-        // Check if search is empty and set background image if no input
-        if (searchQuery.length === 0) {
-          $('#job-grid').empty(); // Clear the job grid
-          $('.main-content').css('background', 'url(/assets/jobs1.png) no-repeat center center'); // Show background image
-          $('.main-content').css('background-size', 'cover');
-        } else {
-          $('.main-content').css('background', 'none'); // Remove background image when typing
-
-          // Make AJAX request for search results
-          fetchJobData(searchQuery, sortType);
-        }
-      });
-
-      // Search button functionality
-      $('.search-button').on('click', function() {
-        var searchQuery = $('#search-bar').val();
-
-        if (searchQuery.length === 0) return; // Do nothing if the search input is empty
-
-        const BACKEND = "https://justai-backend.onrender.com"; // Your backend API URL
-
-        // Fetch job data with the current search query and sort type
-        fetchJobData(searchQuery, sortType);
-      });
-
-      // Handle sort buttons click
-      $('#sort-newest').on('click', function() {
-        sortType = 'newest'; // Set sort type to newest
-        $('#sort-newest').addClass('active');
-        $('#sort-salary').removeClass('active');
-        var searchQuery = $('#search-bar').val();
-        fetchJobData(searchQuery, sortType);
-      });
-
-      $('#sort-salary').on('click', function() {
-        sortType = 'salary'; // Set sort type to highest salary
-        $('#sort-salary').addClass('active');
-        $('#sort-newest').removeClass('active');
-        var searchQuery = $('#search-bar').val();
-        fetchJobData(searchQuery, sortType);
-      });
-
-      // Fetch job data based on search query and sort type
-      function fetchJobData(searchQuery, sortType) {
-        const BACKEND = "https://justai-backend.onrender.com"; // Your backend API URL
-
-        $.ajax({
-          url: `${BACKEND}/api/jobs/search?query=data`, 
-          type: 'GET',
-          data: { query: searchQuery, sort: sortType },
-          success: function(response) {
-            $('#job-grid').empty();
-            if (response.jobs.length > 0) {
-              response.jobs.forEach(function(job) {
-                var jobCard = `<div class="job-card">
-                                   <div class="image-placeholder"></div>
-                                   <p class="job-title">${job.title}</p>
-                                   <p class="company">${job.company}</p>
-                                   <strong class="salary">${job.salary}</strong>
-                                   <p class="description">${job.description}</p>
-                                   <small class="posted-date">${job.posted_date}</small>
-                                 </div>`;
-                $('#job-grid').append(jobCard);
-              });
-            } else {
-              $('#job-grid').append('<p>No jobs found</p>');
-            }
-          },
-          error: function() {
-            $('#job-grid').append('<p>Error fetching jobs</p>');
+              jobCard.innerHTML = `
+                <div class="job-title">${job.title}</div>
+                <div class="company">${job.company}</div>
+                <div class="salary">${job.salary}</div>
+                <div class="description">${job.description}</div>
+                <div class="posted-date">Posted on: ${job.posted_date}</div>
+              `;
+              jobGrid.appendChild(jobCard);
+            });
+            resultsContainer.appendChild(jobGrid);
           }
+        })
+        .catch(error => {
+          console.error('Error fetching jobs:', error);
+          alert("There was an error searching for jobs. Please try again later.");
         });
-      }
-
-      // Ensure background image is shown when page loads and no search input is present
-      if ($('#search-bar').val().length === 0) {
-        $('.main-content').css('background', 'url(/assets/jobs1.png) no-repeat center center');
-        $('.main-content').css('background-size', 'cover');
-      }
     });
   </script>
 </body>
