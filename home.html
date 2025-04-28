@@ -83,7 +83,7 @@
                         jobCardsContainer.innerHTML = ''; // Clear previous jobs
                         data.forEach(job => {
                             const card = document.createElement('div');
-                            card.classList.add('job-card', 'dark'); // Apply dark styling
+                            card.classList.add('job-card'); // Apply dark styling
 
                             card.innerHTML = `
                                 <h2>${job.title}</h2>
@@ -93,7 +93,7 @@
                                     <li>Type: ${job.type}</li>
                                     <li>Status: ${job.status}</li>
                                 </ul>
-                                <button class="apply-btn-r">Apply</button>
+                                <button class="apply-btn">Apply</button>
                             `;
 
                             jobCardsContainer.appendChild(card);
@@ -153,15 +153,16 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#">Ethical AI Jobs</a></li>
-                    <li><a href="#">Connect & Grow</a></li>
-                    <li><a href="#">Who We Are</a></li>
-                    <li><a href="#">Support & Inquiries</a></li>
+                    <li><a href="marketplace.html">Ethical AI Jobs</a></li>
+                    <li><a href="community.html">Connect & Grow</a></li>
+                    <li><a href="about.html">Who We Are</a></li>
+                    <li><a href="support-inquiries.html">Support & Inquiries</a></li>
                     <li><a href="#">FAQs</a></li>
                     <li><a href="#">Blog</a></li>
                 </ul>
@@ -184,7 +185,7 @@
                 </ul>
             </div>
         </div>
-    </footer>   
+    </footer> 
 
 </body>
 </html>
