@@ -15,7 +15,7 @@ body {
 /* Navigation Bar */
 .navbar {
     display: flex;
-    justify-content: space-evenly; /* Logo on the left, menu on the right */
+    justify-content: space-between; /* Logo on the left, menu on the right */
     align-items: center;
     padding: 15px 20px;
     background: #fff;
@@ -60,6 +60,7 @@ body {
 .register {
     background: #444;
 }
+
 
 /* Hero Section */
 .hero {

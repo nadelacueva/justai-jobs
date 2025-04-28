@@ -5,56 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Register | JustAI Jobs</title>
   <link rel="stylesheet" href="/css/register.css" />
+  <script>
+    function validateForm(event) {
+      const accountType = document.getElementById('accountType').value;
+      const company = document.getElementById('company');
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const agreement = document.getElementById('agreement').checked;
+      const errorMessage = document.getElementById('error-message');
+      let isValid = true;
+
+      // Clear previous error messages
+      errorMessage.textContent = "";
+
+      // 1. Make company optional if employee, required if employer
+      if (accountType === 'employee') {
+        company.removeAttribute('required');
+      } else {
+        company.setAttribute('required', 'true');
+      }
+
+      // 2. Check if password and confirm password match
+      if (password !== confirmPassword) {
+        errorMessage.textContent = "Passwords do not match!";
+        isValid = false;
+      }
+
+      // 3. Check if the user agrees to the terms
+      if (!agreement) {
+        errorMessage.textContent += " You must agree to the Terms and Conditions.";
+        isValid = false;
+      }
+
+      // If any validation fails, prevent form submission
+      if (!isValid) {
+        event.preventDefault();
+      }
+    }
+
+    // Event listener for form submission
+    window.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('registerForm').addEventListener('submit', validateForm);
+    });
+  </script>
 </head>
 <body>
-  <header class="header">
-    <div class="logo">
-      <a href="home.html"><img src="/assets/logo.png" alt="Logo" class="logo"></a>
-    </div>
-    <nav class="nav-links">
-      <a href="marketplace.html">Ethical AI Jobs</a>
-      <a href="community.html">Connect & Grow</a>
-      <a href="about.html">Who We Are</a>
-      <a href="support-inquiries.html">Support & Inquiries</a>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+        <div class="logo">
+          <a href="index.html"><img src="/assets/logo.png" alt="Logo" class="logo"></a>
+        </div>
+        <ul class="nav-links">
+            <!-- <li><a href="marketplace.html">Ethical AI Jobs</a></li> -->
+            <li><a href="community.html">Connect & Grow</a></li>
+            <li><a href="about.html">Who We Are</a></li>
+            <li><a href="support-inquiries.html">Support & Inquiries</a></li>
+            <li><a href="sign-in.html">Sign in</a></li>
+        </ul>
+        <!-- <a href="sign-in.html"><button class="sign-in">Sign in</button></a>
+        <a href="register.html"><button class="register">Register</button></a> -->
     </nav>
-    <div class="auth-buttons">
-      <button class="btn-outline">Sign in</button>
-      <button class="btn-black">Register</button>
-    </div>
   </header>
 
   <main class="register-container">
     <h1 class="main-title">JustAI Jobs</h1>
-    <p class="subtitle">Fair & Square</p>
+    <p class="subtitle">Registration Form</p>
     
-    <div class="register-box">
+    <form id="registerForm" action="https://justai-backend.onrender.com/api/register" method="POST" class="register-box">
       <label for="accountType">Account Type</label>
-      <select id="accountType">
-        <option value="">Value</option>
+      <select id="accountType" required>
+        <option value="">Select Account Type</option>
         <option value="employee">Employee</option>
         <option value="employer">Employer</option>
       </select>
 
       <label for="name">Name</label>
-      <input type="text" id="name" placeholder="Value" />
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
 
       <label for="email">Email</label>
-      <input type="email" id="email" placeholder="Value" />
+      <input type="email" id="email" name="email" placeholder="Your Email" required />
 
       <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Value" />
+      <input type="password" id="password" name="password" placeholder="Password" required />
 
       <label for="confirmPassword">Confirm Password</label>
-      <input type="password" id="confirmPassword" placeholder="Value" />
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required />
+
+      <label for="company">Company</label>
+      <input type="text" id="company" name="company" placeholder="Your Company" />
 
       <div class="checkbox-group">
-        <input type="checkbox" id="agreement" />
-        <label for="agreement">Label</label>
-        <p class="checkbox-desc">Description</p>
+        <input type="checkbox" id="agreement" name="agreement" required />
+        <label for="agreement">I agree to the <a href="#">Terms and Conditions</a></label>
       </div>
+      <p class="checkbox-desc">By checking this box, you confirm that you have read and accepted the Terms and Conditions of JustAI Jobs.</p>
 
-      <button class="btn-black full-width">Register</button>
-    </div>
+      <p id="error-message" style="color: red;"></p>
+
+      <button class="btn-black full-width" type="submit">Register</button>
+    </form>
   </main>
 
   <!-- Footer -->
@@ -63,10 +113,10 @@
         <div class="footer-column">
             <h3>Quick Links</h3>
             <ul>
-                <li><a href="#">Ethical AI Jobs</a></li>
-                <li><a href="#">Connect & Grow</a></li>
-                <li><a href="#">Who We Are</a></li>
-                <li><a href="#">Support & Inquiries</a></li>
+                <li><a href="marketplace.html">Ethical AI Jobs</a></li>
+                <li><a href="community.html">Connect & Grow</a></li>
+                <li><a href="about.html">Who We Are</a></li>
+                <li><a href="support-inquiries.html">Support & Inquiries</a></li>
                 <li><a href="#">FAQs</a></li>
                 <li><a href="#">Blog</a></li>
             </ul>
@@ -89,7 +139,6 @@
             </ul>
         </div>
     </div>
-</footer> 
-
+  </footer>
 </body>
 </html>
