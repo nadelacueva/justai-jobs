@@ -43,7 +43,7 @@
         </div>
       
         <!-- Job cards will be dynamically inserted here -->
-        <div class="job-cards"></div>
+        <div class="job-cards"><div class="job-card dark"></div></div>
       
       </section>
       
@@ -65,18 +65,14 @@
               }
       
               card.innerHTML = `
-                <div class="job-cards">
-                    <div class="job-card dark">
-                        <h2>${job.title}</h2>
-                        <p class="price">${job.salary}</p>
-                        <ul>
-                        <li>${job.description}</li>
-                        <li>Type: ${job.type}</li>
-                        <li>Status: ${job.status}</li>
-                        </ul>
-                        <button class="apply-btn">Apply</button>
-                    </div>
-                </div>
+                <h2>${job.title}</h2>
+                <p class="price">${job.salary}</p>
+                <ul>
+                    <li>${job.description}</li>
+                    <li>Type: ${job.type}</li>
+                    <li>Status: ${job.status}</li>
+                </ul>
+                <button class="apply-btn">Apply</button>
               `;
       
               jobCardsContainer.appendChild(card);
