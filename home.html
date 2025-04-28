@@ -43,7 +43,7 @@
         </div>
       
         <!-- Job cards will be dynamically inserted here -->
-        <div class="job-cards"><div class="job-card dark"></div></div>
+        <div class="job-cards"></div>
       
       </section>
       
@@ -61,12 +61,12 @@
               card.classList.add('job-card');
       
               if (job.highlighted) {
-                card.classList.add('dark');
+                card.classList.add('job-card dark');
               }
       
               card.innerHTML = `
                 <h2>${job.title}</h2>
-                <p class="price">${job.salary}</p>
+                <p class="price"><b><i>$ ${job.salary}</i></b></p>
                 <ul>
                     <li>${job.description}</li>
                     <li>Type: ${job.type}</li>
