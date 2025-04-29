@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Connect &amp; Grow – JustAI Jobs</title>
+  <title>Connect & Grow – JustAI Jobs</title>
   <link rel="stylesheet" href="/css/community.css" />
 </head>
 <body>
 
   <!-- Navigation Bar -->
   <header class="navbar">
-    <a href="home.html"><img src="/assets/logo.png" alt="JustAI Jobs Logo" class="logo" /></a>
+    <a href="home.html"><img src="/assets/main_logo.png" alt="JustAI Jobs Logo" class="logo" /></a>
     <nav>
       <ul class="nav-links">
-        <li><a href="home.html">Ethical AI Jobs</a></li>
-        <li><a href="#" class="active">Connect &amp; Grow</a></li>
+        <li><a href="marketplace.html">Ethical AI Jobs</a></li>
+        <li><a href="community.html" class="active">Connect & Grow</a></li>
         <li><a href="about.html">Who We Are</a></li>
-        <li><a href="support.html">Support &amp; Inquiries</a></li>
-        <li><a href="dashboard.html">Account Dashboard</a></li>
+        <li><a href="support.html">Support & Inquiries</a></li>
+        <li><a href="account-dashboard.html">Account Dashboard</a></li>
       </ul>
     </nav>
   </header>
@@ -31,103 +31,169 @@
   <!-- Employer Carousel -->
   <section class="carousel-section">
     <div class="carousel-wrapper">
-      <button class="carousel-btn left">&larr;</button>
-      <div class="carousel-container">
-        <div class="carousel-item"></div>
-        <div class="carousel-item"></div>
-        <div class="carousel-item"></div>
+      <button class="carousel-btn left" onclick="moveCarousel('left')">←</button>
+      <div class="carousel-container" id="carousel-container">
+        <div class="carousel-item">
+          <h4>TechCore</h4>
+          <p>"JustAI Jobs helped us find top-notch AI talent quickly and efficiently."</p>
+          <p class="company-description">A leading AI solutions provider focusing on machine learning and big data analysis.</p>
+        </div>
+        <div class="carousel-item">
+          <h4>AI Solutions</h4>
+          <p>"We found skilled AI professionals that fit our culture perfectly."</p>
+          <p class="company-description">Innovators in AI-driven solutions, specializing in predictive analytics.</p>
+        </div>
+        <div class="carousel-item">
+          <h4>DataWorks</h4>
+          <p>"An amazing platform that streamlined our hiring process!"</p>
+          <p class="company-description">Experts in data-driven AI technology and automation tools.</p>
+        </div>
+        <div class="carousel-item">
+          <h4>IntelliTech</h4>
+          <p>"Our team is growing thanks to the talented AI candidates we found here."</p>
+          <p class="company-description">Pioneering AI in robotics and smart manufacturing systems.</p>
+        </div>
+        <div class="carousel-item">
+          <h4>SmartAI</h4>
+          <p>"The best place to find passionate and experienced AI professionals."</p>
+          <p class="company-description">Transforming industries with cutting-edge AI solutions for businesses.</p>
+        </div>
+        <div class="carousel-item">
+          <h4>TechMind</h4>
+          <p>"Thanks to JustAI Jobs, we quickly found the right fit for our AI team."</p>
+          <p class="company-description">Leading AI research and development for sustainable energy solutions.</p>
+        </div>
+        <div class="carousel-item">
+          <h4>InnovateAI</h4>
+          <p>"An efficient way to hire AI talent with minimal effort and great results."</p>
+          <p class="company-description">AI for healthcare, improving patient outcomes through deep learning.</p>
+        </div>
+        <div class="carousel-item">
+          <h4>DataCraft</h4>
+          <p>"Highly satisfied with the quality of candidates we found through JustAI Jobs."</p>
+          <p class="company-description">Specialists in AI for data processing and cloud computing solutions.</p>
+        </div>
       </div>
-      <button class="carousel-btn right">&rarr;</button>
+      <button class="carousel-btn right" onclick="moveCarousel('right')">→</button>
     </div>
   </section>
 
-  <!-- Latest Reviews -->
-  <section class="reviews">
-    <h2>Latest reviews</h2>
-    <div class="review-grid">
-      <div class="review-card">
-        <p>⭐⭐⭐⭐⭐</p>
-        <h3>Review title</h3>
-        <p>Review body</p>
-        <div class="reviewer">
-          <img src="avatar.png" alt="Reviewer">
-          <div>
-            <p>Reviewer name</p>
-            <small>Date</small>
-          </div>
+
+  <!-- Reviews & Testimonials -->
+  <section class="community-feedback">
+    <div class="feedback-group">
+      <!-- Testimonials first (left) -->
+      <div class="testimonials">
+        <h2>What People Are Saying</h2>
+        <div class="testimonial-grid" id="testimonial-grid">
+          <!-- Testimonials will be inserted here dynamically -->
         </div>
       </div>
-      <div class="review-card">
-        <p>⭐⭐⭐⭐⭐</p>
-        <h3>Review title</h3>
-        <p>Review body</p>
-        <div class="reviewer">
-          <img src="avatar.png" alt="Reviewer">
-          <div>
-            <p>Reviewer name</p>
-            <small>Date</small>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <p>⭐⭐⭐⭐⭐</p>
-        <h3>Review title</h3>
-        <p>Review body</p>
-        <div class="reviewer">
-          <img src="avatar.png" alt="Reviewer">
-          <div>
-            <p>Reviewer name</p>
-            <small>Date</small>
-          </div>
+
+      <!-- Reviews second (right) -->
+      <div class="reviews">
+        <h2>Latest Reviews</h2>
+        <div class="review-grid" id="review-grid">
+          <!-- Reviews will be inserted here dynamically -->
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Feedback Section -->
-  <section class="feedback">
-    <h2>Share a piece of your mind</h2>
-    <p>Anything you want to say to the employers?</p>
-    <form>
-      <input type="text" placeholder="Thoughts?" />
-      <button type="submit">Submit</button>
-    </form>
-  </section>
-
 
   <!-- Footer -->
   <footer>
-      <div class="footer-container">
-          <div class="footer-column">
-              <h3>Quick Links</h3>
-              <ul>
-                  <li><a href="marketplace.html">Ethical AI Jobs</a></li>
-                  <li><a href="community.html">Connect & Grow</a></li>
-                  <li><a href="about.html">Who We Are</a></li>
-                  <li><a href="support-inquiries.html">Support & Inquiries</a></li>
-                  <li><a href="faqs.html" target="_blank">FAQs</a></li>
-                  <li><a href="blog.html" target="_blank">Blog</a></li>
-              </ul>
-          </div>
-          <div class="footer-column">
-              <h3>Let's Connect</h3>
-              <ul>
-                  <li><a href="support-inquiries.html">Quick Chat</a></li>
-                  <li><a href="support-inquiries.html">Email</a></li>
-                  <li><a href="support-inquiries.html">Phone</a></li>
-                  <li><a href="support-inquiries.html">Address</a></li>
-              </ul>
-          </div>
-          <div class="footer-column">
-              <h3>Legal & Policies</h3>
-              <ul>
-                  <li><a href="privacy.html" target="_blank">Privacy Policy</a></li>
-                  <li><a href="terms.html" target="_blank">Terms of Service</a></li>
-                  <li><a href="commitment.html" target="_blank">Fair Hiring Commitment</a></li>
-              </ul>
-          </div>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="marketplace.html">Ethical AI Jobs</a></li>
+          <li><a href="community.html">Connect & Grow</a></li>
+          <li><a href="about.html">Who We Are</a></li>
+          <li><a href="support-inquiries.html">Support & Inquiries</a></li>
+          <li><a href="faqs.html" target="_blank">FAQs</a></li>
+          <li><a href="blog.html" target="_blank">Blog</a></li>
+        </ul>
       </div>
-  </footer> 
+      <div class="footer-column">
+        <h3>Let's Connect</h3>
+        <ul>
+          <li><a href="support-inquiries.html">Quick Chat</a></li>
+          <li><a href="support-inquiries.html">Email</a></li>
+          <li><a href="support-inquiries.html">Phone</a></li>
+          <li><a href="support-inquiries.html">Address</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal & Policies</h3>
+        <ul>
+          <li><a href="privacy.html" target="_blank">Privacy Policy</a></li>
+          <li><a href="terms.html" target="_blank">Terms of Service</a></li>
+          <li><a href="commitment.html" target="_blank">Fair Hiring Commitment</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Fetch Reviews
+    fetch("https://justai-backend.onrender.com/api/community/reviews")
+      .then(res => res.json())
+      .then(reviews => {
+        const reviewGrid = document.getElementById("review-grid");
+        reviewGrid.innerHTML = "";
+        reviews.forEach(r => {
+          reviewGrid.innerHTML += `
+            <div class="review-card">
+              <p>${'⭐'.repeat(Math.floor(r.rating))}${r.rating % 1 ? '' : ''}</p>
+              <p>${r.review_body}</p>
+              <div class="reviewer">
+                <img src="/assets/avatar.png" alt="Reviewer">
+                <div>
+                  <p>${r.reviewer_name}</p>
+                  <small>${new Date(r.review_date).toLocaleDateString()}</small>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+      });
+
+    // Fetch Testimonials
+    fetch("https://justai-backend.onrender.com/api/community/testimonials")
+      .then(res => res.json())
+      .then(testimonials => {
+        const testimonialGrid = document.getElementById("testimonial-grid");
+        testimonialGrid.innerHTML = "";
+        testimonials.forEach(t => {
+          testimonialGrid.innerHTML += `
+            <div class="testimonial-card">
+              <p>"${t.testimonial}"</p>
+              <h4>- ${t.user_name}</h4>
+            </div>
+          `;
+        });
+      });
+  </script>
+
+  <!-- JavaScript for Carousel -->
+  <script>
+    let currentIndex = 0;
+    
+    function moveCarousel(direction) {
+      const items = document.querySelectorAll('.carousel-item');
+      const totalItems = items.length;
+      const carouselContainer = document.getElementById('carousel-container');
+    
+      if (direction === 'left') {
+        currentIndex = (currentIndex === 0) ? totalItems - 4 : currentIndex - 1;
+      } else if (direction === 'right') {
+        currentIndex = (currentIndex === totalItems - 4) ? 0 : currentIndex + 1;
+      }
+    
+      const newTransformValue = -currentIndex * (items[0].offsetWidth + 30); // Adjusted for gap between items
+      carouselContainer.style.transform = `translateX(${newTransformValue}px)`;
+    }
+    </script>
 
 </body>
 </html>

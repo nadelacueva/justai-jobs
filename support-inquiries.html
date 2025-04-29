@@ -26,105 +26,121 @@
 
   <!-- Hero -->
   <section class="hero">
-    <h1>JustAi Jobs</h1>
-    <p class="subtitle">Fair & Square</p>
-    <form class="contact-form">
-      <label for="topic">Label</label>
-      <select id="topic" name="topic">
-        <option value="">Value</option>
+    <h1>Support & Inquiries</h1>
+    <p class="subtitle">How can we assist you today?</p>
+    
+    <form id="support-form" class="contact-form">
+      <label for="category">Category</label>
+      <select id="category" name="category">
+        <option value="">Select Category</option>
+        <option value="Technical Support">Technical Support</option>
+        <option value="Account Issues">Account Issues</option>
+        <option value="Billing">Billing</option>
+        <option value="General Inquiry">General Inquiry</option>
       </select>
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="Value"></textarea>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Your email" required>
 
-      <button type="submit">Submit</button>
+      <label for="content">Message</label>
+      <textarea id="content" name="content" placeholder="Describe your issue or inquiry" required></textarea>
+
+      <button type="submit">Submit Inquiry</button>
     </form>
   </section>
 
   <!-- FAQs -->
   <section class="faq">
     <h2>Frequently Asked Questions</h2>
-    <p class="faq-sub">Subheading</p>
-
-    <div class="faq-item open">
-      <button class="faq-title">Title</button>
-      <div class="faq-content">
-        <p>Answer the frequently asked question in a simple sentence, a longish paragraph, or even in a list.</p>
-      </div>
-    </div>
-
-    <!-- Repeat for other questions -->
-    <div class="faq-item">
-      <button class="faq-title">Title</button>
-      <div class="faq-content">
-        <p>Hidden content</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Reviews -->
-  <section class="reviews">
-    <h3>Top Questions-Solutions</h3>
-    <div class="review-cards">
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <h4>Review title</h4>
-        <p>Review body</p>
-        <div class="review-meta">
-          <img src="avatar.jpg" alt="Reviewer" />
-          <div>
-            <p>Reviewer name</p>
-            <small>Date</small>
-          </div>
-        </div>
-      </div>
-      <!-- Repeat for other cards -->
-    </div>
-  </section>
-
-  <!-- Newsletter -->
-  <section class="newsletter">
-    <h4>Follow the latest trends</h4>
-    <p>With our daily newsletter</p>
-    <form>
-      <input type="email" placeholder="you@example.com" />
-      <button type="submit">Submit</button>
-    </form>
+    <a href="faqs.html">Visit FAQs</a>
   </section>
 
   <!-- Footer -->
   <footer>
-      <div class="footer-container">
-          <div class="footer-column">
-              <h3>Quick Links</h3>
-              <ul>
-                  <li><a href="marketplace.html">Ethical AI Jobs</a></li>
-                  <li><a href="community.html">Connect & Grow</a></li>
-                  <li><a href="about.html">Who We Are</a></li>
-                  <li><a href="support-inquiries.html">Support & Inquiries</a></li>
-                  <li><a href="faqs.html" target="_blank">FAQs</a></li>
-                  <li><a href="blog.html" target="_blank">Blog</a></li>
-              </ul>
-          </div>
-          <div class="footer-column">
-              <h3>Let's Connect</h3>
-              <ul>
-                  <li><a href="support-inquiries.html">Quick Chat</a></li>
-                  <li><a href="support-inquiries.html">Email</a></li>
-                  <li><a href="support-inquiries.html">Phone</a></li>
-                  <li><a href="support-inquiries.html">Address</a></li>
-              </ul>
-          </div>
-          <div class="footer-column">
-              <h3>Legal & Policies</h3>
-              <ul>
-                  <li><a href="privacy.html" target="_blank">Privacy Policy</a></li>
-                  <li><a href="terms.html" target="_blank">Terms of Service</a></li>
-                  <li><a href="commitment.html" target="_blank">Fair Hiring Commitment</a></li>
-              </ul>
-          </div>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="marketplace.html">Ethical AI Jobs</a></li>
+          <li><a href="community.html">Connect & Grow</a></li>
+          <li><a href="about.html">Who We Are</a></li>
+          <li><a href="support-inquiries.html">Support & Inquiries</a></li>
+          <li><a href="faqs.html">FAQs</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
       </div>
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="support-inquiries.html">Quick Chat</a></li>
+          <li><a href="support-inquiries.html">Email</a></li>
+          <li><a href="support-inquiries.html">Phone</a></li>
+          <li><a href="support-inquiries.html">Address</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal & Policies</h3>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="commitment.html">Fair Hiring Commitment</a></li>
+        </ul>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    // Handle form submission via AJAX
+    document.getElementById('support-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      // Collect form data
+      const category = document.getElementById('category').value;
+      const email = document.getElementById('email').value;
+      const content = document.getElementById('content').value;
+
+      // Get user_id from localStorage or default to null if not available
+      const user_id = localStorage.getItem("user_id") || null;
+
+      // Validate form fields
+      if (!category || !email || !content) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // Prepare the data for submission
+      const formData = new FormData();
+      formData.append('category', category);
+      formData.append('email', email);
+      formData.append('content', content);
+      formData.append('user_id', user_id); // Pass user_id, null if not available
+
+      // Submit the form data to the backend API
+      fetch('/api/support', {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json(); // Parse the response only if it's ok
+        } else {
+          throw new Error("Failed to submit the inquiry.");
+        }
+      })
+      .then(data => {
+        if (data.message === "Support inquiry submitted successfully.") {
+          alert("Your inquiry has been submitted!");
+          document.getElementById('support-form').reset(); // Reset the form after submission
+        } else {
+          alert("There was an error with your submission. Please try again.");
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while submitting the form.');
+      });
+    });
+  </script>
 
 </body>
 </html>
