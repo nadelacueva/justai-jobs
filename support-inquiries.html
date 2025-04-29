@@ -94,13 +94,13 @@
     document.getElementById('support-form').addEventListener('submit', function(event) {
       event.preventDefault(); // Prevent default form submission
 
+      // Default user ID
+      const user_id = ""; // Default empty string for user_id
+      
       // Collect form data
       const category = document.getElementById('category').value;
       const email = document.getElementById('email').value;
       const content = document.getElementById('content').value;
-
-      // Default user ID
-      const user_id = ""; // Default empty string for user_id
 
       // Prepare the data for submission
       const formData = {
