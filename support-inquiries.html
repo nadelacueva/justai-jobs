@@ -105,18 +105,18 @@
         return;
       }
 
-      // Retrieve the user ID (replace with actual user session or localStorage if needed)
-      const user_id = localStorage.getItem('user_id') || null; // Default to null if no user ID found
+      // Default user ID (empty string)
+      const user_id = ""; // Default to an empty string
 
       // Prepare the data for submission
       const formData = new FormData();
       formData.append('category', category);
       formData.append('email', email);
       formData.append('content', content);
-      formData.append('user_id', user_id); // Send user ID or null if not available
+      formData.append('user_id', user_id); // Send user ID as an empty string
 
       // Submit the form data to the backend API
-      fetch('/api/support', {
+      fetch('https://justai-backend.onrender.com/api/support', {
         method: 'POST',
         body: formData,
       })
