@@ -99,32 +99,30 @@
       const email = document.getElementById('email').value;
       const content = document.getElementById('content').value;
 
-      // Validate form fields
-      if (!category || !email || !content) {
-        alert('Please fill in all fields.');
-        return;
-      }
-
-      // Default user ID (empty string)
-      const user_id = ""; // Default to an empty string
+      // Default user ID
+      const user_id = ""; // Default empty string for user_id
 
       // Prepare the data for submission
-      const formData = new FormData();
-      formData.append('category', category);
-      formData.append('email', email);
-      formData.append('content', content);
-      formData.append('user_id', user_id); // Send user ID as an empty string
+      const formData = {
+        category: category,
+        email: email,
+        content: content,
+        user_id: user_id, // Ensure user_id is included in the body
+      };
 
-      // Submit the form data to the backend API
+      // Send the data to the backend API
       fetch('https://justai-backend.onrender.com/api/support', {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json', // Important: set the Content-Type to JSON
+        },
+        body: JSON.stringify(formData), // Convert the formData to a JSON string
       })
       .then(response => {
         if (!response.ok) {
           throw new Error("Failed to submit the inquiry.");
         }
-        return response.json(); // Parse the response only if it's ok
+        return response.json(); // Parse the response as JSON
       })
       .then(data => {
         if (data.message === "Support inquiry submitted successfully.") {
