@@ -138,10 +138,11 @@ h2, h3, h4, h5 {
 .profile-image {
   width: 200px;
   height: 200px;
-  background: #e0e0e0 url('/assets/default-profile.png') no-repeat center center;
+  background: #e0e0e0 url('/assets/avatar.png') no-repeat center center;
   background-size: cover;
   border-radius: 0;
   overflow: hidden;
+  object-fit: cover;
 }
 
 .profile-title strong {

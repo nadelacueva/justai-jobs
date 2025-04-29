@@ -22,7 +22,13 @@
     <section class="profile-section">
       <div class="profile-summary">
         <div class="profile-image">
-          <img id="profile-picture" src="" alt="Profile Picture" />
+          <!-- Always use the default avatar -->
+          <img 
+            id="profile-picture" 
+            src="/assets/avatar.png" 
+            alt="Profile Picture"
+            onerror="this.onerror=null; this.src='/assets/avatar.png';"
+          />        
         </div>
         <div class="profile-info">
           <h2 id="username">Account Name</h2>
@@ -117,7 +123,9 @@
           document.getElementById('hours').innerHTML = `${data.total_hours_worked || 0}<br/><small>Hours Worked</small>`;
           document.getElementById('total-earnings').innerHTML = `$${data.total_earnings || 0}<br/><small>Total Earnings</small>`;
           document.getElementById('pending-payment').innerHTML = `$${data.pending_payment || 0}<br/><small>Pending Payments</small>`;
-          document.getElementById('profile-picture').src = data.profile_picture || '/assets/default-profile.png';
+
+          // No need to modify the profile picture anymore, it's always using default
+          // document.getElementById('profile-picture').src = '/assets/avatar.png';
 
           fetchUserReviews(data.worker_id);
           fetchUserJobApplications(data.worker_id);

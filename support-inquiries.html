@@ -29,6 +29,9 @@
     <h1>Support & Inquiries</h1>
     <p class="subtitle">How can we assist you today?</p>
     
+    <!-- Success Message Container -->
+    <div id="success-message" class="success-message" style="display:none;"></div>
+
     <form id="support-form" class="contact-form">
       <label for="category">Category</label>
       <select id="category" name="category">
@@ -57,36 +60,36 @@
 
   <!-- Footer -->
   <footer>
-      <div class="footer-container">
-          <div class="footer-column">
-              <h3>Quick Links</h3>
-              <ul>
-                  <li><a href="marketplace.html">Ethical AI Jobs</a></li>
-                  <li><a href="community.html">Connect & Grow</a></li>
-                  <li><a href="about.html">Who We Are</a></li>
-                  <li><a href="support-inquiries.html">Support & Inquiries</a></li>
-                  <li><a href="faqs.html">FAQs</a></li>
-                  <li><a href="blog.html">Blog</a></li>
-              </ul>
-          </div>
-          <div class="footer-column">
-              <h3>Contact</h3>
-              <ul>
-                  <li><a href="support-inquiries.html">Quick Chat</a></li>
-                  <li><a href="support-inquiries.html">Email</a></li>
-                  <li><a href="support-inquiries.html">Phone</a></li>
-                  <li><a href="support-inquiries.html">Address</a></li>
-              </ul>
-          </div>
-          <div class="footer-column">
-              <h3>Legal & Policies</h3>
-              <ul>
-                  <li><a href="privacy.html">Privacy Policy</a></li>
-                  <li><a href="terms.html">Terms of Service</a></li>
-                  <li><a href="commitment.html">Fair Hiring Commitment</a></li>
-              </ul>
-          </div>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="marketplace.html">Ethical AI Jobs</a></li>
+          <li><a href="community.html">Connect & Grow</a></li>
+          <li><a href="about.html">Who We Are</a></li>
+          <li><a href="support-inquiries.html">Support & Inquiries</a></li>
+          <li><a href="faqs.html">FAQs</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
       </div>
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="support-inquiries.html">Quick Chat</a></li>
+          <li><a href="support-inquiries.html">Email</a></li>
+          <li><a href="support-inquiries.html">Phone</a></li>
+          <li><a href="support-inquiries.html">Address</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal & Policies</h3>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="commitment.html">Fair Hiring Commitment</a></li>
+        </ul>
+      </div>
+    </div>
   </footer>
 
   <script>
@@ -126,8 +129,14 @@
       })
       .then(data => {
         if (data.message === "Support inquiry submitted successfully.") {
-          alert("Your inquiry has been submitted!");
-          document.getElementById('support-form').reset(); // Reset the form after submission
+          // Display the success message instead of alert
+          const successMessageElement = document.getElementById('success-message');
+          successMessageElement.textContent = "Your inquiry has been submitted successfully!";
+          successMessageElement.style.display = "block"; // Make it visible
+          successMessageElement.style.color = "green"; // Set the text color to green
+          
+          // Optionally, reset the form
+          document.getElementById('support-form').reset();
         } else {
           alert("There was an error with your submission. Please try again.");
         }
