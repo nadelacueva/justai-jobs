@@ -57,36 +57,36 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-container">
-      <div class="footer-column">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="marketplace.html">Ethical AI Jobs</a></li>
-          <li><a href="community.html">Connect & Grow</a></li>
-          <li><a href="about.html">Who We Are</a></li>
-          <li><a href="support-inquiries.html">Support & Inquiries</a></li>
-          <li><a href="faqs.html">FAQs</a></li>
-          <li><a href="blog.html">Blog</a></li>
-        </ul>
+      <div class="footer-container">
+          <div class="footer-column">
+              <h3>Quick Links</h3>
+              <ul>
+                  <li><a href="marketplace.html">Ethical AI Jobs</a></li>
+                  <li><a href="community.html">Connect & Grow</a></li>
+                  <li><a href="about.html">Who We Are</a></li>
+                  <li><a href="support-inquiries.html">Support & Inquiries</a></li>
+                  <li><a href="faqs.html">FAQs</a></li>
+                  <li><a href="blog.html">Blog</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h3>Contact</h3>
+              <ul>
+                  <li><a href="support-inquiries.html">Quick Chat</a></li>
+                  <li><a href="support-inquiries.html">Email</a></li>
+                  <li><a href="support-inquiries.html">Phone</a></li>
+                  <li><a href="support-inquiries.html">Address</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h3>Legal & Policies</h3>
+              <ul>
+                  <li><a href="privacy.html">Privacy Policy</a></li>
+                  <li><a href="terms.html">Terms of Service</a></li>
+                  <li><a href="commitment.html">Fair Hiring Commitment</a></li>
+              </ul>
+          </div>
       </div>
-      <div class="footer-column">
-        <h3>Contact</h3>
-        <ul>
-          <li><a href="support-inquiries.html">Quick Chat</a></li>
-          <li><a href="support-inquiries.html">Email</a></li>
-          <li><a href="support-inquiries.html">Phone</a></li>
-          <li><a href="support-inquiries.html">Address</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Legal & Policies</h3>
-        <ul>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Service</a></li>
-          <li><a href="commitment.html">Fair Hiring Commitment</a></li>
-        </ul>
-      </div>
-    </div>
   </footer>
 
   <script>
@@ -99,21 +99,21 @@
       const email = document.getElementById('email').value;
       const content = document.getElementById('content').value;
 
-      // Get user_id from localStorage or default to null if not available
-      const user_id = localStorage.getItem("user_id") || null;
-
       // Validate form fields
       if (!category || !email || !content) {
         alert('Please fill in all fields.');
         return;
       }
 
+      // Retrieve the user ID (replace with actual user session or localStorage if needed)
+      const user_id = localStorage.getItem('user_id') || null; // Default to null if no user ID found
+
       // Prepare the data for submission
       const formData = new FormData();
       formData.append('category', category);
       formData.append('email', email);
       formData.append('content', content);
-      formData.append('user_id', user_id); // Pass user_id, null if not available
+      formData.append('user_id', user_id); // Send user ID or null if not available
 
       // Submit the form data to the backend API
       fetch('/api/support', {
@@ -121,11 +121,10 @@
         body: formData,
       })
       .then(response => {
-        if (response.ok) {
-          return response.json(); // Parse the response only if it's ok
-        } else {
+        if (!response.ok) {
           throw new Error("Failed to submit the inquiry.");
         }
+        return response.json(); // Parse the response only if it's ok
       })
       .then(data => {
         if (data.message === "Support inquiry submitted successfully.") {
