@@ -113,10 +113,27 @@ h2, h3, h4, h5 {
 }
 
 /* Profile Section */
+
 .profile-section {
   display: flex;
+  justify-content: space-between;
   gap: 2rem;
   margin-bottom: 3rem;
+  align-items: center;
+  flex-wrap: wrap; /* allows stacking on smaller screens */
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.profile-summary, .profile-metrics {
+  flex: 1;
+  min-width: 200px;
+}
+
+.profile-summary {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .profile-image {
@@ -124,10 +141,8 @@ h2, h3, h4, h5 {
   height: 200px;
   background: #e0e0e0 url('/assets/default-profile.png') no-repeat center center;
   background-size: cover;
-}
-
-.profile-info {
-  flex: 1;
+  border-radius: 0; /* keep box style */
+  overflow: hidden;
 }
 
 .profile-title strong {
@@ -146,21 +161,33 @@ h2, h3, h4, h5 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #666;
 }
 
-.metrics {
+.profile-metrics .metrics,
+.profile-metrics .earnings {
   display: flex;
-  gap: 2rem;
+  justify-content: space-between;
+  gap: 1rem;
   margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
-.metric {
-  background: #f9f9f9;
+.metric, .earning {
+  flex: 1;
   padding: 1rem;
   border-radius: 6px;
   text-align: center;
+  background: #f9f9f9;
+  font-weight: normal;
+  color: #444;
+  transition: all 0.2s ease-in-out;
+}
+
+.metric:hover, .earning:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
 }
 
 .metric p {
@@ -171,21 +198,7 @@ h2, h3, h4, h5 {
 
 .metric span {
   font-size: 1.5rem;
-  color: #ffbc00; /* Adding a bit of contrast to the icons */
-}
-
-.earnings {
-  display: flex;
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-.earning {
-  padding: 1rem;
-  border-radius: 6px;
-  text-align: center;
-  font-weight: normal;
-  color: #444;
+  color: #ffbc00;
 }
 
 .earning.green {
@@ -194,6 +207,30 @@ h2, h3, h4, h5 {
 
 .earning.yellow {
   background: #fff3c4;
+}
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+  .profile-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profile-summary {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-metrics .metrics,
+  .profile-metrics .earnings {
+    flex-direction: column;
+  }
 }
 
 /* Reviews */
@@ -326,4 +363,10 @@ footer ul li {
 footer ul li a {
   color: #ddd;
   text-decoration: none;
+}
+
+/* Hover effect */
+.footer-column ul li a:hover {
+  text-decoration: underline;
+  color: white; /* Retains white font color on hover */
 }

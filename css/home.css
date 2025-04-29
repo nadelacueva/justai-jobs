@@ -233,3 +233,9 @@ footer ul li a {
     color: #ddd;
     text-decoration: none;
 }
+
+/* Hover effect */
+.footer-column ul li a:hover {
+    text-decoration: underline;
+    color: white; /* Retains white font color on hover */
+}

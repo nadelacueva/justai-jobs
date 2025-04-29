@@ -38,7 +38,7 @@ body {
     color: #000;
     font-weight: bold;
     padding: 8px 12px;
-    transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 /* Hover effect: Black background */
@@ -48,11 +48,28 @@ body {
     border-radius: 5px;
 }
 
+/* Active Link Style */
+.nav-links a.active {
+    background: black;
+    color: white;
+    border-radius: 5px;
+}
+
 /* Hero Section */
 .hero {
     text-align: center;
-    padding: 50px;
-    background: #eee;
+    background: #e0e0e0;
+    padding: 50px 20px;
+    background: url('/assets/landing1.png') center/cover no-repeat; /* background photo */
+}
+
+.hero h1 {
+    font-size: 48px; /* big and bold */
+    font-family: Georgia, serif;
+}
+
+.hero p {
+    font-size: 24px; /* a bit smaller than h1 */
 }
 
 .about-content {
@@ -61,14 +78,30 @@ body {
     justify-content: space-between;
     padding: 50px;
     gap: 20px;
+    flex-wrap: wrap; /* To make it responsive */
 }
 
 .about-content .text {
     flex: 1;
+    max-width: 50%; /* Restrict text block size */
+    padding-right: 20px; /* Space between text and image */
 }
 
 .about-content .image {
     flex: 1;
+    max-width: 50%; /* Restrict image block size */
+    overflow: hidden; /* Crop image */
+    height: 400px; /* Set a fixed height to the image container */
+    border-radius: 10px; /* Optional: Rounded corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-content .image img {
+    object-fit: cover; /* Ensures the image fills the container and is cropped */
+    width: 100%;
+    height: 100%;
 }
 
 ul li {
@@ -98,6 +131,7 @@ ul li {
 .stories {
     padding: 50px;
     text-align: center;
+    background-color: #f4f4f4;
 }
 
 .story-cards {
@@ -161,4 +195,10 @@ footer ul li {
 footer ul li a {
     color: #ddd;
     text-decoration: none;
+}
+
+/* Hover effect */
+.footer-column ul li a:hover {
+    text-decoration: underline;
+    color: white; /* Retains white font color on hover */
 }
